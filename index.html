@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learn Games - Home</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;800&family=Comic+Neue:wght@700&family=Fredoka+One&family=Patrick+Hand&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+        /* Cores/gradientes */
+        :root {
+            --learn-orange: #FF6B35;
+            --learn-teal: #4ECDC4;
+            --learn-yellow: #FFD166;
+            --learn-dark: #2A2D34;
+            --learn-light: #FFFCF9;
+            --learn-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C00 100%);
+            --learn-gradient-light: linear-gradient(145deg, #ffffff 0%, #FFF5E6 100%);
+        }
+        
+        body {
+            background-color: var(--learn-light);
+            font-family: 'Patrick Hand', cursive;
+            padding-top: 200px;
+        }
+        
+        .titulo-principal {
+            font-family: 'Chewy', cursive;
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, var(--learn-orange), var(--learn-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 4px 4px 0px rgba(255, 107, 53, 0.2);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitulo {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Navbar */
+        .nav {
+            background: var(--learn-gradient);
+            padding: 20px 0 15px 0;
+            border-radius: 0 0 30px 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 209, 102, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .btn-menu {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            border-radius: 25px;
+            padding: 10px 25px;
+            color: white;
+            margin: 0 8px;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-menu:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Seção principal */
+        .main-content {
+            margin-top: 0;
+            padding-top: 20px;
+        }
+
+        /* Cards jogos */
+        .card-jogo {
+            border-radius: 25px;
+            border: none;
+            background: var(--learn-gradient-light);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 
+                15px 15px 30px rgba(255, 107, 53, 0.1),
+                -5px -5px 20px rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+        }
+
+        .card-jogo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--learn-gradient);
+        }
+        
+        .card-jogo:hover {
+            transform: translateY(-12px) rotate(1deg);
+            box-shadow: 
+                20px 20px 40px rgba(255, 107, 53, 0.15),
+                -8px -8px 25px rgba(255, 255, 255, 0.9);
+        }
+        
+        .card-titulo {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            color: var(--learn-dark);
+            font-size: 1.4rem;
+        }
+        
+        .btn-jogar {
+            background: var(--learn-gradient);
+            border: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            border-radius: 25px;
+            padding: 10px 25px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-jogar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-jogar:hover::before {
+            left: 100%;
+        }
+        
+        .btn-jogar:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Decorações */
+        .decoracao {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .decoracao-1 {
+            top: 30%; 
+            left: 8%;
+            font-size: 6rem;
+            color: var(--learn-orange);
+            animation-delay: 0s;
+        }
+        
+        .decoracao-2 {
+            bottom: 25%; 
+            right: 8%;
+            font-size: 6rem;
+            color: var(--learn-teal);
+            animation-delay: 2s;
+        }
+
+        .decoracao-3 {
+            top: 55%; 
+            left: 85%;
+            font-size: 4rem;
+            color: var(--learn-yellow);
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Sistema de avaliação */
+        .avaliacao-estrelas {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            gap: 3px;
+        }
+        
+        .estrela {
+            color: #ddd;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .estrela.ativa {
+            color: var(--learn-yellow);
+            text-shadow: 0 0 8px rgba(255, 209, 102, 0.5);
+        }
+        
+        .estrela:hover {
+            transform: scale(1.2);
+        }
+        
+        .contador-avaliacoes {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 5px;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /* Dropdown Como Jogar - NOVO ESTILO */
+        .como-jogar-dropdown {
+            margin: 3rem 0;
+        }
+
+        .dropdown-btn {
+            background: var(--learn-gradient);
+            border: none;
+            border-radius: 25px;
+            padding: 20px 40px;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            width: 100%;
+            text-align: left;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .dropdown-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .dropdown-btn::after {
+            content: '▼';
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .dropdown-btn.active::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .dropdown-content {
+            background: white;
+            border-radius: 0 0 25px 25px;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content.show {
+            max-height: 2000px;
+            padding: 30px;
+        }
+
+        .regras-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .regra-item {
+            background: var(--learn-gradient-light);
+            border-radius: 20px;
+            padding: 2rem;
+            border-left: 5px solid var(--learn-orange);
+            transition: all 0.3s ease;
+        }
+
+        .regra-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.1);
+        }
+
+        .regra-titulo {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            color: var(--learn-dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .regra-icon {
+            font-size: 1.5rem;
+            background: var(--learn-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .regra-lista {
+            list-style: none;
+            padding-left: 0;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .regra-lista li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .regra-lista li::before {
+            content: '🎯';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Benefícios */
+        .beneficios-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #FFFCF9 0%, #FFF5E6 100%);
+            border-radius: 30px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .beneficios-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 209, 102, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .beneficio-card {
+            background: white;
+            border-radius: 20px;
+            border: none;
+            padding: 2rem;
+            text-align: center;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+        }
+
+        .beneficio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--learn-gradient);
+        }
+        
+        .beneficio-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+        }
+        
+        .beneficio-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--learn-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .beneficio-titulo {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            color: var(--learn-dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .beneficio-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Título principal */
+        .section-title {
+            font-family: 'Chewy', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--learn-orange), var(--learn-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 0px rgba(255, 107, 53, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        /* Seção de Comentários */
+        .comentarios-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #FFFCF9 0%, #FFF5E6 100%);
+            border-radius: 30px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comentarios-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .comentario-card {
+            background: white;
+            border-radius: 20px;
+            border: none;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+        }
+
+        .comentario-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--learn-gradient);
+        }
+        
+        .comentario-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+        }
+        
+        .comentario-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--learn-orange), var(--learn-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .comentario-titulo {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            color: var(--learn-dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .comentario-form {
+            margin-top: 2rem;
+        }
+
+        .comentario-input {
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            padding: 15px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .comentario-input:focus {
+            border-color: var(--learn-orange);
+            box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
+        }
+
+        .btn-comentar {
+            background: var(--learn-gradient);
+            border: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            border-radius: 25px;
+            padding: 12px 30px;
+            color: white;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-comentar:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .comentarios-lista {
+            margin-top: 2rem;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .comentario-item {
+            background: var(--learn-gradient-light);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--learn-orange);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .comentario-data {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 0.5rem;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /* Rodapé */
+        footer {
+            background: var(--learn-gradient);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 209, 102, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(78, 205, 196, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-right: 1.5rem;
+            font-family: 'Nunito', sans-serif;
+            position: relative;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--learn-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px) scale(1.2);
+            color: var(--learn-yellow);
+        }
+
+        /* Seção extra */
+        .cta-section {
+            background: var(--learn-gradient-light);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 2rem 0;
+            border: 3px dashed var(--learn-orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+
+        .emoji {
+            font-size: 2.5rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .titulo-principal {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            body {
+                padding-top: 220px; 
+            }
+            
+            .btn-menu {
+                margin: 5px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .nav {
+                padding: 15px 0 10px 0;
+            }
+
+            .decoracao-1,
+            .decoracao-2,
+            .decoracao-3 {
+                display: none;
+            }
+
+            .dropdown-btn {
+                padding: 15px 30px;
+                font-size: 1.3rem;
+            }
+
+            .regras-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* Efeitos extras */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+    </style>
+    </head>
+    <body>
+
+        <!-- Cabeçalho -->
+        <nav class="nav text-white text-center py-4">
+            <div class="container">
+                <h1 class="titulo-principal display-4 mb-2">Learn Games</h1>
+                <p class="subtitulo lead mb-3">
+                    Uma plataforma onde você encontra tanto conhecimento quanto
+                    diversão
+                </p>
+                <!-- Botões do Menu -->
+                <div class="d-flex justify-content-center flex-wrap">
+                    <a href="home.html" class="btn btn-menu">Home</a>
+                    <a href="sobre.html" class="btn btn-menu">Sobre</a>
+                    <a href="contato.html" class="btn btn-menu">Contato</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Decorações -->
+        <div class="decoracao decoracao-1">🎮</div>
+        <div class="decoracao decoracao-2">📚</div>
+        <div class="decoracao decoracao-3">🌟</div>
+
+        <main class="container main-content">
+
+            <!-- Jogos principais -->
+            <section class="my-5" id="jogos-principais">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title">
+                            Jogos Principais
+                        </h2>
+                        <p class="lead fs-5" style="color: var(--learn-dark);">
+                            Descubra nossos jogos educativos mais populares!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-jogo h-100 text-center p-4">
+                        <img src="img/true-false.png"
+                            class="card-img-square rounded-3 mx-auto mb-3 floating"
+                            alt="True or False"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <div class="card-body">
+                            <h3 class="card-titulo">True or False</h3>
+                            <p class="card-text mb-3">Desafie seu conhecimento
+                                com verdades e mentiras</p>
+
+                            <!-- Sistema de Avaliação por Estrelas -->
+                            <div class="avaliacao-estrelas"
+                                data-jogo="true-false">
+                                <span class="estrela" data-value="1">★</span>
+                                <span class="estrela" data-value="2">★</span>
+                                <span class="estrela" data-value="3">★</span>
+                                <span class="estrela" data-value="4">★</span>
+                                <span class="estrela" data-value="5">★</span>
+                            </div>
+                            <div class="contador-avaliacoes"
+                                id="contador-true-false">(0 avaliações)</div>
+
+                            <a
+                                href="https://www.educaplay.com/learning-resources/25586061-desenvolvimento_infantil_verdadeiro_ou_falso.html"
+                                class="btn btn-jogar text-white mt-2">Jogar
+                                Agora</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-jogo h-100 text-center p-4">
+                        <img src="img/caca-palavras.png"
+                            class="card-img-square rounded-3 mx-auto mb-3 floating"
+                            alt="Caça Palavras"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <div class="card-body">
+                            <h3 class="card-titulo">Caça Palavras</h3>
+                            <p class="card-text mb-3">Encontre palavras
+                                escondidas e amplie seu vocabulário</p>
+
+                            <!-- Sistema de Avaliação por Estrelas -->
+                            <div class="avaliacao-estrelas"
+                                data-jogo="caca-palavras">
+                                <span class="estrela" data-value="1">★</span>
+                                <span class="estrela" data-value="2">★</span>
+                                <span class="estrela" data-value="3">★</span>
+                                <span class="estrela" data-value="4">★</span>
+                                <span class="estrela" data-value="5">★</span>
+                            </div>
+                            <div class="contador-avaliacoes"
+                                id="contador-caca-palavras">(0 avaliações)</div>
+
+                            <a
+                                href="https://www.educaplay.com/learning-resources/25434147-caca_palavras_desenvolvimento_infantil.html"
+                                class="btn btn-jogar text-white mt-2">Jogar
+                                Agora</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-jogo h-100 text-center p-4">
+                        <img src="img/jogo-frogger.png"
+                            class="card-img-square rounded-3 mx-auto mb-3 floating"
+                            alt="Rio Frogger"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <div class="card-body">
+                            <h3 class="card-titulo">Rio Frogger</h3>
+                            <p class="card-text mb-3">Aventure-se neste jogo de
+                                perguntas e respostas</p>
+
+                            <!-- Sistema de Avaliação por Estrelas -->
+                            <div class="avaliacao-estrelas"
+                                data-jogo="rio-frogger">
+                                <span class="estrela" data-value="1">★</span>
+                                <span class="estrela" data-value="2">★</span>
+                                <span class="estrela" data-value="3">★</span>
+                                <span class="estrela" data-value="4">★</span>
+                                <span class="estrela" data-value="5">★</span>
+                            </div>
+                            <div class="contador-avaliacoes"
+                                id="contador-rio-frogger">(0 avaliações)</div>
+
+                            <a
+                                href="https://www.educaplay.com/learning-resources/25057510-quiz_geral_de_conhecimentos.html"
+                                class="btn btn-jogar text-white mt-2">Jogar
+                                Agora</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-jogo h-100 text-center p-4">
+                        <img src="img/jogo-memoria.png"
+                            class="card-img-square rounded-3 mx-auto mb-3 floating"
+                            alt="Jogo da Memória"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <div class="card-body">
+                            <h3 class="card-titulo">Jogo da Memória</h3>
+                            <p class="card-text mb-3">Encontre os pares e
+                                exercite sua memória</p>
+
+                            <!-- Sistema de Avaliação por Estrelas -->
+                            <div class="avaliacao-estrelas"
+                                data-jogo="jogo-memoria">
+                                <span class="estrela" data-value="1">★</span>
+                                <span class="estrela" data-value="2">★</span>
+                                <span class="estrela" data-value="3">★</span>
+                                <span class="estrela" data-value="4">★</span>
+                                <span class="estrela" data-value="5">★</span>
+                            </div>
+                            <div class="contador-avaliacoes"
+                                id="contador-jogo-memoria">(0 avaliações)</div>
+
+                            <a 
+                                href="https://www.educaplay.com/learning-resources/24976245-alfabeto_3d_memoria_das_letras.html"
+                                class="btn btn-jogar text-white mt-2">Jogar
+                                Agora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Como Jogar Dropdown - NOVA SEÇÃO -->
+            <section class="como-jogar-dropdown">
+                <div class="container">
+                    <div class="dropdown-wrapper">
+                        <button class="dropdown-btn" onclick="toggleDropdown()">
+                            <i class="fas fa-gamepad me-3"></i>
+                            Como Jogar?
+                            <span class="ms-2">Aprenda as regras dos nossos jogos educativos</span>
+                        </button>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <div class="regras-grid">
+                                <div class="regra-item">
+                                    <h4 class="regra-titulo">
+                                        <span class="regra-icon">❓</span>
+                                        True or False
+                                    </h4>
+                                    <ul class="regra-lista">
+                                        <li>Leia cada afirmação cuidadosamente</li>
+                                        <li>Decida se é Verdadeiro ou Falso</li>
+                                        <li>Clique na resposta correta</li>
+                                        <li>Ganhe pontos por cada acerto</li>
+                                        <li>Acerte o máximo que conseguir!</li>
+                                    </ul>
+                                </div>
+
+                                <div class="regra-item">
+                                    <h4 class="regra-titulo">
+                                        <span class="regra-icon">🔍</span>
+                                        Caça Palavras
+                                    </h4>
+                                    <ul class="regra-lista">
+                                        <li>Encontre as palavras na lista</li>
+                                        <li>Procure na horizontal, vertical e diagonal</li>
+                                        <li>Clique e arraste para selecionar</li>
+                                        <li>Encontre todas as palavras escondidas</li>
+                                        <li>Desafie-se contra o tempo!</li>
+                                    </ul>
+                                </div>
+
+                                <div class="regra-item">
+                                    <h4 class="regra-titulo">
+                                        <span class="regra-icon">🐸</span>
+                                        Rio Frogger
+                                    </h4>
+                                    <ul class="regra-lista">
+                                        <li>Responda perguntas para avançar</li>
+                                        <li>Cuidado para não afundar no rio!</li>
+                                        <li>Cada acerto leva você mais longe</li>
+                                        <li>Chegue ao outro lado do rio!</li>
+                                    </ul>
+                                </div>
+
+                                <div class="regra-item">
+                                    <h4 class="regra-titulo">
+                                        <span class="regra-icon">🧠</span>
+                                        Jogo da Memória
+                                    </h4>
+                                    <ul class="regra-lista">
+                                        <li>Clique nas cartas para virá-las</li>
+                                        <li>Encontre os pares correspondentes</li>
+                                        <li>Memorize a posição das cartas</li>
+                                        <li>Forme todos os pares no menor tempo</li>
+                                        <li>Desafie sua memória visual!</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de benefícios -->
+            <section class="beneficios-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center mb-5">
+                            <h2 class="section-title">
+                                Benefícios dos Jogos Educativos
+                            </h2>
+                            <p class="lead fs-5">Descubra como nossos jogos
+                                ajudam no desenvolvimento das crianças</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="beneficio-card">
+                                <div class="beneficio-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h4 class="beneficio-titulo">Desenvolvimento
+                                    Cognitivo</h4>
+                                <p>Estimula o raciocínio lógico, a memória e a
+                                    capacidade de resolver problemas de forma
+                                    divertida.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="beneficio-card">
+                                <div class="beneficio-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <h4 class="beneficio-titulo">Aprendizado
+                                    Divertido</h4>
+                                <p>Transforma o processo de aprendizado em uma
+                                    experiência prazerosa e engajadora.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="beneficio-card">
+                                <div class="beneficio-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4 class="beneficio-titulo">Habilidades
+                                    Sociais</h4>
+                                <p>Promove a cooperação, a tomada de decisões e
+                                    o trabalho em equipe.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="beneficio-card">
+                                <div class="beneficio-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h4 class="beneficio-titulo">Criatividade</h4>
+                                <p>Incentiva a imaginação e a busca por soluções
+                                    criativas para os desafios.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="beneficio-card">
+                                <div class="beneficio-icon">
+                                    <i class="fas fa-gamepad"></i>
+                                </div>
+                                <h4 class="beneficio-titulo">Motivação</h4>
+                                <p>Sistema de recompensas mantém as crianças
+                                    motivadas a continuar aprendendo.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="beneficio-card">
+                                <div class="beneficio-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4 class="beneficio-titulo">Progresso
+                                    Contínuo</h4>
+                                <p>Desafios adaptáveis que evoluem conforme o
+                                    desenvolvimento da criança.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comentários -->
+            <section class="comentarios-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center mb-5">
+                            <h2 class="section-title">
+                                Comentários
+                            </h2>
+                            <p class="lead fs-5">Deixe seus comentários sobre o site e os jogos</p>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="comentario-card">
+                                <div class="comentario-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <h4 class="comentario-titulo">Compartilhe sua opinião</h4>
+                                <p>Escreva abaixo seus comentários, sugestões ou observações sobre o site e os jogos educativos.</p>
+                                
+                                <form class="comentario-form" id="comentarioForm">
+                                    <div class="mb-3">
+                                        <textarea class="form-control comentario-input" id="comentarioTexto" 
+                                                  placeholder="Digite seu comentário aqui..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-comentar">
+                                        <i class="fas fa-paper-plane me-2"></i>Enviar Comentário
+                                    </button>
+                                </form>
+
+                                <div class="comentarios-lista" id="comentariosLista">
+                                    
+                                    <!-- Comentários serão adicionados aqui via JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção extra -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="cta-section text-center">
+                        <h2 class="section-title mb-4">Por que aprender
+                            jogando?</h2>
+                        <p class="lead fs-5 mb-4">
+                            Aprender é bom, e jogar também! Em um mundo cada vez
+                            mais digital, nada melhor do que unir diversão e
+                            educação para criar experiências incríveis de
+                            aprendizado.
+                        </p>
+                        <p class="mt-4">
+                            <span class="emoji">👧👦</span>
+                            <strong class="fs-5"
+                                style="color: var(--learn-dark);">Indicado para
+                                crianças de 5 a 10 anos</strong>
+                            <span class="emoji">📚🎨</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Rodapé -->
+        <footer>
+            <div class="container position-relative">
+                <div class="row">
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <h4 class="fw-bold mb-3">Learn Games</h4>
+                        <p class="mb-0">Uma plataforma onde você encontra tanto
+                            conhecimento quanto diversão.</p>
+                    </div>
+                    <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                        <h5 class="mb-3">Links</h5>
+                        <div class="footer-links d-flex flex-column">
+                            <a href="home.html">Home</a>
+                            <a href="sobre.html">Sobre</a>
+                            <a href="contato.html">Contato</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+                        <h5 class="mb-3">Jogos</h5>
+                        <div class="footer-links d-flex flex-column">
+                            <a href="home.html#jogos-principais">True or False</a>
+                            <a href="home.html#jogos-principais">Caça Palavras</a>
+                            <a href="home.html#jogos-principais">Rio Frogger</a>
+                            <a href="home.html#jogos-principais">Jogo da Memória</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4">
+                        <h5 class="mb-3">Contato</h5>
+                        <p class="mb-2"><i
+                                class="fas fa-envelope me-2"></i>games.learn57@gmail.com</p>
+                        <p class="mb-2"><i class="fas fa-phone me-2"></i> (41)
+                            99999-9999</p>
+                        <p class="mb-0"><i
+                                class="fas fa-map-marker-alt me-2"></i> Paraná,
+                            Brasil</p>
+                    </div>
+                </div>
+                <hr class="my-4 bg-light">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0">© 2025 Learn Games - Todos os direitos
+                            reservados</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="#" class="text-light me-3">Política de
+                            Privacidade</a>
+                        <a href="#" class="text-light">Termos de Uso</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap 5 JS Bundle with Popper -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+        // Função para o dropdown "Como Jogar?"
+        function toggleDropdown() {
+            const dropdownContent = document.getElementById('dropdownContent');
+            const dropdownBtn = document.querySelector('.dropdown-btn');
+            
+            dropdownContent.classList.toggle('show');
+            dropdownBtn.classList.toggle('active');
+        }
+
+        // Efeitos interativos simples
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona classe de animação aos cards quando entram na viewport
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('pulse');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.card-jogo').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Sistema de Avaliação por Estrelas
+            inicializarSistemaAvaliacao();
+            
+            // Sistema de Comentários
+            inicializarSistemaComentarios();
+        });
+
+        // Sistema de Avaliação por Estrelas
+        function inicializarSistemaAvaliacao() {
+            // Carregar avaliações do localStorage
+            const avaliacoes = JSON.parse(localStorage.getItem('avaliacoes-learn-games')) || {};
+            
+            // Inicializar cada conjunto de estrelas
+            document.querySelectorAll('.avaliacao-estrelas').forEach(container => {
+                const jogoId = container.getAttribute('data-jogo');
+                const estrelas = container.querySelectorAll('.estrela');
+                const contadorElement = document.getElementById(`contador-${jogoId}`);
+                
+                // Atualizar visualização com base nas avaliações salvas
+                atualizarVisualizacaoEstrelas(jogoId, estrelas, contadorElement, avaliacoes);
+                
+                // Adicionar eventos de clique para cada estrela
+                estrelas.forEach(estrela => {
+                    estrela.addEventListener('click', function() {
+                        const valor = parseInt(this.getAttribute('data-value'));
+                        avaliarJogo(jogoId, valor, estrelas, contadorElement, avaliacoes);
+                    });
+                    
+                    // Efeito hover
+                    estrela.addEventListener('mouseover', function() {
+                        const valorHover = parseInt(this.getAttribute('data-value'));
+                        destacarEstrelas(estrelas, valorHover);
+                    });
+                    
+                    estrela.addEventListener('mouseout', function() {
+                        const jogoId = container.getAttribute('data-jogo');
+                        restaurarEstrelas(jogoId, estrelas, avaliacoes);
+                    });
+                });
+            });
+        }
+
+        function avaliarJogo(jogoId, valor, estrelas, contadorElement, avaliacoes) {
+            // Salvar avaliação
+            if (!avaliacoes[jogoId]) {
+                avaliacoes[jogoId] = { total: 0, quantidade: 0, media: 0 };
+            }
+            
+            // Adicionar nova avaliação
+            avaliacoes[jogoId].total += valor;
+            avaliacoes[jogoId].quantidade += 1;
+            avaliacoes[jogoId].media = avaliacoes[jogoId].total / avaliacoes[jogoId].quantidade;
+            
+            // Salvar no localStorage
+            localStorage.setItem('avaliacoes-learn-games', JSON.stringify(avaliacoes));
+            
+            // Atualizar visualização
+            atualizarVisualizacaoEstrelas(jogoId, estrelas, contadorElement, avaliacoes);
+            
+            // Feedback visual
+            contadorElement.textContent = `(${avaliacoes[jogoId].quantidade} avaliações)`;
+            contadorElement.style.color = "var(--learn-orange)";
+            setTimeout(() => {
+                contadorElement.style.color = "#777";
+            }, 1000);
+        }
+
+        function atualizarVisualizacaoEstrelas(jogoId, estrelas, contadorElement, avaliacoes) {
+            if (avaliacoes[jogoId]) {
+                const media = avaliacoes[jogoId].media;
+                const quantidade = avaliacoes[jogoId].quantidade;
+                
+                // Atualizar contador
+                contadorElement.textContent = `(${quantidade} avaliações)`;
+                
+                // Destacar estrelas com base na média
+                destacarEstrelas(estrelas, Math.round(media));
+            } else {
+                // Sem avaliações ainda
+                contadorElement.textContent = "(0 avaliações)";
+                estrelas.forEach(estrela => estrela.classList.remove('ativa'));
+            }
+        }
+
+        function destacarEstrelas(estrelas, ateValor) {
+            estrelas.forEach((estrela, index) => {
+                if (index < ateValor) {
+                    estrela.classList.add('ativa');
+                } else {
+                    estrela.classList.remove('ativa');
+                }
+            });
+        }
+
+        function restaurarEstrelas(jogoId, estrelas, avaliacoes) {
+            if (avaliacoes[jogoId]) {
+                const media = avaliacoes[jogoId].media;
+                destacarEstrelas(estrelas, Math.round(media));
+            } else {
+                estrelas.forEach(estrela => estrela.classList.remove('ativa'));
+            }
+        }
+
+        // Sistema de Comentários
+        function inicializarSistemaComentarios() {
+            const form = document.getElementById('comentarioForm');
+            const lista = document.getElementById('comentariosLista');
+            
+            // Carregar comentários do localStorage
+            const comentarios = JSON.parse(localStorage.getItem('comentarios-learn-games')) || [];
+            
+            // Exibir comentários existentes
+            exibirComentarios(comentarios);
+            
+            // Adicionar evento de submit ao formulário
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const texto = document.getElementById('comentarioTexto').value.trim();
+                
+                if (texto) {
+                    // Criar novo comentário
+                    const novoComentario = {
+                        id: Date.now(),
+                        texto: texto,
+                        data: new Date().toLocaleString('pt-BR')
+                    };
+                    
+                    // Adicionar ao array e salvar
+                    comentarios.unshift(novoComentario);
+                    localStorage.setItem('comentarios-learn-games', JSON.stringify(comentarios));
+                    
+                    // Atualizar a lista
+                    exibirComentarios(comentarios);
+                    
+                    // Limpar o formulário
+                    form.reset();
+                    
+                    // Feedback visual
+                    const btn = form.querySelector('button');
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-check me-2"></i>Comentário Enviado!';
+                    btn.disabled = true;
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }, 2000);
+                }
+            });
+        }
+
+        function exibirComentarios(comentarios) {
+            const lista = document.getElementById('comentariosLista');
+            
+            if (comentarios.length === 0) {
+                lista.innerHTML = '<p class="text-center text-muted">Nenhum comentário ainda. Seja o primeiro a comentar!</p>';
+                return;
+            }
+            
+            lista.innerHTML = comentarios.map(comentario => `
+                <div class="comentario-item">
+                    <p class="mb-2">${comentario.texto}</p>
+                    <div class="comentario-data">
+                        <i class="fas fa-clock me-1"></i>${comentario.data}
+                    </div>
+                </div>
+            `).join('');
+        }
+        </script>
+    </body>
+</html>
